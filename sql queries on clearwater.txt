@@ -1,0 +1,28 @@
+-- #1
+SELECT item_id, color, qoh FROM inventory;
+-- #2
+SELECT shipment_id, date_expected FROM shipment WHERE date_expected>'2003-07-25';
+-- #3
+SELECT COUNT(order_id) as OrderCount FROM cust_order WHERE cust_id=179;
+-- #4
+SELECT inv_id, item_size, qoh FROM inventory WHERE color='Spruce';
+--#5
+SELECT item_id, color, qoh FROM inventory WHERE item_size='M' and price=59.95;
+-- #6
+SELECT SUM(qoh) FROM inventory;
+-- #7
+SELECT * FROM customer WHERE city LIKE '%n';
+-- #8
+SELECT * FROM category WHERE category_id=1 or category_id=4;
+-- #9
+SELECT * FROM inventory WHERE color LIKE '%e' or item_size!=11 and inv_id>11820;
+-- #10
+SELECT distinct color FROM inventory;
+-- #11
+SELECT * FROM shipment_line ORDER BY date_received, inv_id, shipment_id;
+-- #12
+SELECT * FROM customer WHERE city LIKE 'S%' and zip!=54867;
+-- #13
+SELECT item_id, AVG(qoh) FROM inventory GROUP BY item_id ORDER BY AVG(qoh);
+-- #14
+SELECT item_id, AVG(qoh) FROM inventory GROUP BY item_id having AVG(qoh) between 30 and 120 order by AVG(qoh);
